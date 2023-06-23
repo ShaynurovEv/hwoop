@@ -15,6 +15,24 @@ public class RadioTest {
     }
 
     @Test
+    public void noValidStationSelectionMoreMax() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void noValidStationSelectionLessMin() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+        int expected = 0;
+        int actual = radio.getCurrentStation();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void switchingFromTheMaximumStation() {
         Radio radio = new Radio();
         radio.setCurrentStation(9);
@@ -72,6 +90,24 @@ public class RadioTest {
         Radio radio = new Radio();
         radio.setCurrentVolume(90);
         int expected = 90;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void noValidVolumeValueMoreMax() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+        int expected = 0;
+        int actual = radio.getCurrentVolume();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void noValidVolumeValueLessMin() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+        int expected = 0;
         int actual = radio.getCurrentVolume();
         Assertions.assertEquals(expected, actual);
     }
