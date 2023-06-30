@@ -7,17 +7,17 @@ public class RadioTest {
 
     @Test
     public void validStationSelection() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(6);
-        int expected = 6;
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(14);
+        int expected = 14;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void noValidStationSelectionMoreMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(10);
+        Radio radio = new Radio(17);
+        radio.setCurrentStation(17);
         int expected = 0;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
@@ -34,8 +34,8 @@ public class RadioTest {
 
     @Test
     public void switchingFromTheMaximumStation() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(14);
         radio.next();
         int expected = 0;
         int actual = radio.getCurrentStation();
@@ -66,10 +66,10 @@ public class RadioTest {
 
     @Test
     public void switchingToThePreviousStationFromTheMinimum() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(20);
         radio.setCurrentStation(0);
         radio.prev();
-        int expected = 9;
+        int expected = 19;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
@@ -77,10 +77,10 @@ public class RadioTest {
 
     @Test
     public void switchingToThePreviousStationFromTheMaximum() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        Radio radio = new Radio(15);
+        radio.setCurrentStation(14);
         radio.prev();
-        int expected = 8;
+        int expected = 13;
         int actual = radio.getCurrentStation();
         Assertions.assertEquals(expected, actual);
     }
